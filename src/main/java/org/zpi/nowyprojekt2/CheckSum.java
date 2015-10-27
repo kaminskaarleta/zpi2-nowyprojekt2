@@ -4,14 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Hex;
 
 public class CheckSum {
-	public static String createHash(String fileName) throws NoSuchAlgorithmException, FileNotFoundException, IOException{
+	public static String createHashMD5(String fileName) throws NoSuchAlgorithmException, FileNotFoundException, IOException{
 		
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		String digest = getDigest(new FileInputStream(fileName), md, 2048);
@@ -20,6 +19,15 @@ public class CheckSum {
 		return digest;
 	}
 
+	public static String createHashSHA1(String fileName) throws NoSuchAlgorithmException, FileNotFoundException, IOException{
+		
+		MessageDigest md = MessageDigest.getInstance("SHA-1");
+		String digest = getDigest(new FileInputStream(fileName), md, 2048);
+
+		System.out.println("MD5 Digest:" + digest);
+		return digest;
+	}
+	
 	public static String getDigest(InputStream is, MessageDigest md, int byteArraySize)
 			throws NoSuchAlgorithmException, IOException {
 
