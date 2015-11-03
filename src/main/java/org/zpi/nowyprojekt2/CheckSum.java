@@ -24,10 +24,10 @@ public class CheckSum {
 		MessageDigest md = MessageDigest.getInstance("SHA-1");
 		String digest = getDigest(new FileInputStream(fileName), md, 2048);
 
-		System.out.println("MD5 Digest:" + digest);
+		System.out.println("SHA-1 Digest:" + digest);
 		return digest;
 	}
-	
+		
 	public static String getDigest(InputStream is, MessageDigest md, int byteArraySize)
 			throws NoSuchAlgorithmException, IOException {
 
